@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/humidityValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="0 %"
+        android:textSize="175px" />
+    
+     <TextView
+        android:id="@+id/labelGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+        android:layout_below="@+id/humidityValue"
+         android:layout_marginTop="15dp"
+        android:textSize="40dp"
+        android:text="Crisper Guide" />
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/labelGuide"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="30dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+            <ImageButton
+		        android:id="@+id/buttonApple"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:padding="20dp"
+		        android:src="@drawable/apple" />
+            
+            <ImageButton
+		        android:id="@+id/buttonBerry"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:padding="20dp"
+		        android:src="@drawable/berry" />
+            
+            <ImageButton
+		        android:id="@+id/buttonCarrot"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:padding="20dp"
+		        android:src="@drawable/carrot" />
+            
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+            
+              <ImageButton
+		        android:id="@+id/buttonPotato"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/potato" />
+              
+              <ImageButton
+		        android:id="@+id/buttonCauliflower"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/cauliflower" />
+              
+              <ImageButton
+		        android:id="@+id/buttonMushroom"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/mushroom" />
+              
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+              
+              <ImageButton
+		        android:id="@+id/buttonTomato"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/tomato" />
+              
+              <ImageButton
+		        android:id="@+id/buttonOnion"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/onion" />
+              
+              <ImageButton
+		        android:id="@+id/buttonPepper"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/pepper" />
+              
+        </TableRow>
+    </TableLayout>
+
+</RelativeLayout>
