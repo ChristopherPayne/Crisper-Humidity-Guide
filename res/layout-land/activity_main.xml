@@ -13,30 +13,26 @@
         android:id="@+id/humidityValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
         android:text="Not Connected"
-        android:textSize="100px" />
+        android:textSize="75px" />
     
      <TextView
         android:id="@+id/labelGuide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_centerHorizontal="true"
-        android:layout_below="@+id/humidityValue"
-         android:layout_marginTop="60dp"
+        android:layout_marginTop="60dp"
         android:textSize="40dp"
+        android:layout_marginLeft="500dp"
+        android:textColor="#FFFFFF"
         android:text="Crisper Guide" />
 
     <TableLayout
         android:id="@+id/tableLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/labelGuide"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="30dp" >
+        android:layout_marginLeft="450dp"
+        android:layout_marginTop="0dp" >
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -60,6 +56,9 @@
 		        android:id="@+id/button2"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
+		         android:adjustViewBounds="true"  
+			    android:maxWidth="120dp"    
+			    android:scaleType="fitCenter"
 		        android:src="@drawable/row2" />
               
         </TableRow>
