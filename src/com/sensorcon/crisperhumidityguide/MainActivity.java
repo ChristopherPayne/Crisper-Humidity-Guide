@@ -46,8 +46,11 @@ public class MainActivity extends Activity {
 	private ImageButton button2;
 	private ImageButton button3;
 	private ImageButton xButton;
+	private ImageButton xButton2;
 	private PopupWindow popup;
+	private PopupWindow instPopup;
 	private TextView tv_humidityVal;
+	private TextView tv_tempVal;
 	private TextView tv_popupDescription;
 	private TextView tv_popupHumidity;
 	private TextView tv_popupExamples;
@@ -59,6 +62,8 @@ public class MainActivity extends Activity {
 	 * Data variables
 	 */
 	private int humidityVal;
+	private int tempVal_F;
+	private int tempVal_C;
 	/*
 	 * Sensordone variables
 	 */
@@ -75,10 +80,15 @@ public class MainActivity extends Activity {
 		popup = new PopupWindow(this);
 
 		humidityVal = 0;
+		tempVal_F = 0;
+		tempVal_C = 0;
 		tv_humidityVal = (TextView)findViewById(R.id.humidityValue);
+		tv_tempVal = (TextView)findViewById(R.id.tempValue);
 		button1 = (ImageButton)findViewById(R.id.button1);
 		button2 = (ImageButton)findViewById(R.id.button2);
 		button3 = (ImageButton)findViewById(R.id.button3);
+		
+		tv_tempVal.setVisibility(View.GONE);
 
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -91,6 +101,17 @@ public class MainActivity extends Activity {
 				360, 
 				true);
 
+		LayoutInflater inflater2 = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+		View layout2 = inflater2.inflate(R.layout.inst_popup,
+				(ViewGroup) findViewById(R.id.popup_element));
+		
+		instPopup = new PopupWindow(
+				layout2, 
+				600, 
+				600, 
+				true);
+		
 		tv_popupHumidity = (TextView)layout.findViewById(R.id.popupHumidity);
 		tv_popupDescription = (TextView)layout.findViewById(R.id.popupDescription);
 		tv_popupExamples = (TextView)layout.findViewById(R.id.popupExamples);
@@ -100,6 +121,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				popup.dismiss();
+			}	
+		});
+		
+		xButton2 = (ImageButton)layout2.findViewById(R.id.xButton);
+		xButton2.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				instPopup.dismiss();
 			}	
 		});
 
@@ -160,6 +189,9 @@ public class MainActivity extends Activity {
 			break;
 		case R.id.connect:
 			myHelper.scanToConnect(myDrone, MainActivity.this , this, false);
+			break;
+		case R.id.instructions:
+			showInstructions();
 			break;
 		}
 
@@ -228,6 +260,13 @@ public class MainActivity extends Activity {
 	/**
 	 * Makes informative popup appear
 	 */
+	public void showInstructions() {
+		instPopup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
+	}
+	
+	/**
+	 * Makes informative popup appear
+	 */
 	public void showPopup3() {
 		tv_popupHumidity.setText(R.string.humidity3);
 		tv_popupDescription.setText(R.string.description3);
@@ -249,6 +288,7 @@ public class MainActivity extends Activity {
 			public void run() {
 				// Turn off myBlinker
 				box.myBlinker.disable();
+				tv_tempVal.setVisibility(View.GONE);
 
 				// Make sure the LEDs go off
 				if (myDrone.isConnected) {
@@ -268,7 +308,8 @@ public class MainActivity extends Activity {
 		@Override
 		public void run() {
 			if(myDrone.isConnected) {
-				tv_humidityVal.setText(Integer.toString(humidityVal) + " %");
+				tv_humidityVal.setText(Integer.toString(humidityVal) + "% R.H.");
+				tv_tempVal.setText(Integer.toString(tempVal_F) + (char) 0x00B0 + " F / " + Integer.toString(tempVal_C) + (char) 0x00B0 + " C");
 				
 				myHandler.postDelayed(this, 1000);
 			}
@@ -295,7 +336,8 @@ public class MainActivity extends Activity {
 		public ConnectionBlinker myBlinker;
 
 		// Holds the sensor of interest - the CO precision sensor
-		public int sensor;
+		public int sensor1;
+		public int sensor2;
 
 		// Our Listeners
 		public DroneEventListener droneEventListener;
@@ -308,17 +350,20 @@ public class MainActivity extends Activity {
 		public TextView tvConnectInfo;
 
 		// Streams data from sensor
-		public SDStreamer streamer;
+		public SDStreamer streamer1;
+		public SDStreamer streamer2;
 
 		public Storage(Context context) {
 
 			// Initialize sensor
-			sensor = myDrone.QS_TYPE_HUMIDITY;
+			sensor1 = myDrone.QS_TYPE_HUMIDITY;
+			sensor2 = myDrone.QS_TYPE_TEMPERATURE;
 
 			// This will Blink our Drone, once a second, Blue
 			myBlinker = new ConnectionBlinker(myDrone, 1000, 0, 255, 0);
 
-			streamer = new SDStreamer(myDrone, sensor);
+			streamer1 = new SDStreamer(myDrone, sensor1);
+			streamer2 = new SDStreamer(myDrone, sensor2);
 
 			/*
 			 * Let's set up our Drone Event Listener.
@@ -333,8 +378,10 @@ public class MainActivity extends Activity {
 
 					quickMessage("Connected!");
 
-					streamer.enable();
-					myDrone.quickEnable(sensor);
+					streamer1.enable();
+					streamer2.enable();
+					myDrone.quickEnable(sensor1);
+					myDrone.quickEnable(sensor2);
 
 					// Flash teh LEDs green
 					myHelper.flashLEDs(myDrone, 3, 100, 0, 0, 22);
@@ -342,6 +389,7 @@ public class MainActivity extends Activity {
 					myBlinker.enable();
 					myBlinker.run();
 					
+					tv_tempVal.setVisibility(View.VISIBLE);
 					myHandler.post(displayHumidityRunnable);
 				}
 
@@ -364,7 +412,16 @@ public class MainActivity extends Activity {
 					humidityVal = (int)myDrone.humidity_Percent;
 					Log.d("chris", Integer.toString(humidityVal));
 	
-					streamer.streamHandler.postDelayed(streamer, 250);
+					streamer1.streamHandler.postDelayed(streamer1, 250);
+				}
+				
+				@Override
+				public void temperatureMeasured(EventObject arg0) {
+					tempVal_F = (int)myDrone.temperature_Farenheit;
+					tempVal_C = (int)myDrone.temperature_Celcius;
+					Log.d("chris", Integer.toString(humidityVal));
+	
+					streamer2.streamHandler.postDelayed(streamer2, 250);
 				}
 				
 				/*
@@ -393,8 +450,6 @@ public class MainActivity extends Activity {
 				@Override
 				public void rgbcMeasured(EventObject arg0) {}
 				@Override
-				public void temperatureMeasured(EventObject arg0) {}
-				@Override
 				public void uartRead(EventObject arg0) {}
 				@Override
 				public void unknown(EventObject arg0) {}
@@ -411,7 +466,11 @@ public class MainActivity extends Activity {
 
 				@Override
 				public void humidityStatus(EventObject arg0) {
-					streamer.run();
+					streamer1.run();
+				}
+				@Override
+				public void temperatureStatus(EventObject arg0) {
+					streamer2.run();
 				}
 
 				/*
@@ -443,8 +502,6 @@ public class MainActivity extends Activity {
 				public void reducingGasStatus(EventObject arg0) {}
 				@Override
 				public void rgbcStatus(EventObject arg0) {}
-				@Override
-				public void temperatureStatus(EventObject arg0) {}
 				@Override
 				public void unknownStatus(EventObject arg0) {}
 			};

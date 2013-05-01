@@ -5,7 +5,7 @@
     android:padding="10dip"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#80000000"
+    android:background="#D0000000"
     android:id="@+id/popup_element"
     >
 
@@ -22,7 +22,7 @@
 	        android:id="@+id/xButton"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@+id/popupHumidity"
+	        android:layout_alignParentRight="true"
 	        android:layout_marginLeft="30dp"
 	        android:src="@drawable/x" />
  
