@@ -240,9 +240,8 @@ public class MainActivity extends Activity {
 		tv_popupHumidity.setText(R.string.humidity1);
 		tv_popupDescription.setText(R.string.description1);
 		tv_popupExamples.setText(R.string.examples1);
-		
-		// The code below assumes that the root container has an id called 'main'
-		popup.showAsDropDown(findViewById(R.id.anchor));
+
+		popup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
 	}
 	
 	/**
@@ -253,15 +252,7 @@ public class MainActivity extends Activity {
 		tv_popupDescription.setText(R.string.description2);
 		tv_popupExamples.setText(R.string.examples2);
 		
-		// The code below assumes that the root container has an id called 'main'
-		popup.showAsDropDown(findViewById(R.id.anchor));
-	}
-	
-	/**
-	 * Makes informative popup appear
-	 */
-	public void showInstructions() {
-		instPopup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
+		popup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
 	}
 	
 	/**
@@ -272,8 +263,14 @@ public class MainActivity extends Activity {
 		tv_popupDescription.setText(R.string.description3);
 		tv_popupExamples.setText(R.string.examples3);
 		
-		// The code below assumes that the root container has an id called 'main'
-		popup.showAsDropDown(findViewById(R.id.anchor));
+		popup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
+	}
+	
+	/**
+	 * Makes informative popup appear
+	 */
+	public void showInstructions() {
+		instPopup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
 	}
 
 	/**
