@@ -7,18 +7,24 @@
     
     <string name="instructions">To connect to the Sensordone, select Connect in the main menu. When connected, the measured humidity will automatically update. Press down on one of the pictures to see information on how that type of produce should be stored. Go to the main menu and choose Instructions for more detailed instructions.</string>
     
-    <string name="humidity1">High Humidty: 90% - 100%</string>
+    <string name="humidity1">High Humidty: (90%RH+)</string>
     <string name="description1">Appropriate for crisp, leafy greens and most vegetables.</string>
     <string name="examples1">Examples: Asparagus, apples, beets, broccoli, brussel sprouts, cabbage, carrots, cauliflower, celeriac, celery, collards, corn, endive, grapes, kale, leeks, parsley, parsnips, pears, peas, radishes, rhubarb, rutabagas, spinach</string>
     
-    <string name="humidity2">Medium Humidty: 80% - 90%</string>
+    <string name="humidity2">Medium Humidty: (75%-90%RH)</string>
     <string name="description2">Appropriate for thin skinned fruits and vegetables.</string>
     <string name="examples2">Examples: Beans, cucumbers, eggplant, cantaloupe, watermelon, peppers, potatoes, tomatoes</string>
     
-    <string name="humidity3">Low Humidty: 60% - 70%</string>
+    <string name="humidity3">Low Humidty: (&lt;70%RH)</string>
     <string name="description3">Appropriate for thick skinned, layered produce.</string>
     <string name="examples3">Examples: Garlic, onions</string>
     
-    <string name="inst1">After Sensordrone is connected, place it in your crisper and close the fridge door. Wait at least 5 minutes for the humidity level to stabalize. You can then adjust the crisper level accordingly to achieve the desired humidity. Every time you adjust the level, wait at least 5 minutes for the humidity to stabalize before attempting to adjust again.</string>
-    <string name="inst2">The three buttons give you a basic idea of what the relative humidity should be for your produce. There are examples provided for each level. If the produce you have is not listed in any of the examples, choose a relative humidity for the category that most closely resembles your produce.</string>
+    <string name="inst1">This app will help you adjust your refrigerator’s crisper to a humidity level that will make your produce store longer.  The guidelines in this app are based on the following reference (click link for more details)</string>
+    <string name="inst2"><a href="%s">http://www.gardening.cornell.edu/factsheets/vegetables/storage.pdf</a></string>
+    <string name="inst3">1.  Make sure your crisper doesn’t have any puddles of water in it, if so, dry them with a paper towel.</string>
+    <string name="inst4">2.  Connect to your Sensordrone from the menu.</string>
+    <string name="inst5">3.  Place your Sensordrone in the crisper and close the door.</string>
+    <string name="inst6">4.  Allow the  Sensordrone to stabilize with the refrigerator temperature/humidity for 15-25 minutes.</string>
+    <string name="inst7">5.  Note the temperature and humidity compared to the guidelines.</string>
+    <string name="inst8">6.  Adjust your crisper setting up or down as needed, and retest (steps 1-5) 4 or more hours later.</string>
 </resources>

@@ -19,6 +19,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,6 +55,7 @@ public class MainActivity extends Activity {
 	private TextView tv_popupDescription;
 	private TextView tv_popupHumidity;
 	private TextView tv_popupExamples;
+	private TextView link;
 	/*
 	 * IO variables
 	 */
@@ -106,10 +108,12 @@ public class MainActivity extends Activity {
 		View layout2 = inflater2.inflate(R.layout.inst_popup,
 				(ViewGroup) findViewById(R.id.popup_element));
 		
+		link = (TextView)layout2.findViewById(R.id.inst2);
+		
 		instPopup = new PopupWindow(
 				layout2, 
-				600, 
-				600, 
+				700, 
+				850, 
 				true);
 		
 		tv_popupHumidity = (TextView)layout.findViewById(R.id.popupHumidity);
@@ -169,6 +173,28 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+
+		if (isFinishing()) {
+			// Try and nicely shut down
+			doOnDisconnect();
+			// A brief delay
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			// Unregister the listener
+			myDrone.unregisterDroneEventListener(box.droneEventListener);
+			myDrone.unregisterDroneStatusListener(box.droneStatusListener);
+
+		} else { 
+			//It's an orientation change.
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -395,12 +421,28 @@ public class MainActivity extends Activity {
 				public void connectionLostEvent(EventObject arg0) {
 					// Turn off the blinker
 					myBlinker.disable();
-					doOnDisconnect();
+					
+					quickMessage("Connection lost! Trying to re-connect!");
+
+					// Try to reconnect once, automatically
+					if (myDrone.btConnect(myDrone.lastMAC)) {
+						// A brief pause
+						try {
+							Thread.sleep(500);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						
+					} else {
+						quickMessage("Re-connect failed");
+						tv_humidityVal.setText("Not Connected");
+						doOnDisconnect();
+					}
 				}
 
 				@Override
 				public void disconnectEvent(EventObject arg0) {
-					doOnDisconnect();
+					quickMessage("Disconnected!");
 					tv_humidityVal.setText("Not Connected");
 				}
 
