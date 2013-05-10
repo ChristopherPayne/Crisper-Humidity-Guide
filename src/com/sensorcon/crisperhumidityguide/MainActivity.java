@@ -18,9 +18,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -52,10 +54,12 @@ public class MainActivity extends Activity {
 	private PopupWindow instPopup;
 	private TextView tv_humidityVal;
 	private TextView tv_tempVal;
+	private TextView tv_noConnect;
 	private TextView tv_popupDescription;
 	private TextView tv_popupHumidity;
 	private TextView tv_popupExamples;
 	private TextView link;
+	public AlertInfo myInfo;
 	/*
 	 * IO variables
 	 */
@@ -86,11 +90,13 @@ public class MainActivity extends Activity {
 		tempVal_C = 0;
 		tv_humidityVal = (TextView)findViewById(R.id.humidityValue);
 		tv_tempVal = (TextView)findViewById(R.id.tempValue);
+		tv_noConnect = (TextView)findViewById(R.id.noConnect);
 		button1 = (ImageButton)findViewById(R.id.button1);
 		button2 = (ImageButton)findViewById(R.id.button2);
 		button3 = (ImageButton)findViewById(R.id.button3);
 		
 		tv_tempVal.setVisibility(View.GONE);
+		tv_humidityVal.setVisibility(View.GONE);
 
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -99,8 +105,8 @@ public class MainActivity extends Activity {
 
 		popup = new PopupWindow(
 				layout, 
-				740, 
-				360, 
+				700, 
+				LayoutParams.WRAP_CONTENT,
 				true);
 
 		LayoutInflater inflater2 = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -113,7 +119,7 @@ public class MainActivity extends Activity {
 		instPopup = new PopupWindow(
 				layout2, 
 				700, 
-				850, 
+				LayoutParams.WRAP_CONTENT, 
 				true);
 		
 		tv_popupHumidity = (TextView)layout.findViewById(R.id.popupHumidity);
@@ -161,6 +167,8 @@ public class MainActivity extends Activity {
 		myDrone = new Drone();
 		box = new Storage(this);
 		myHelper = new SDHelper();
+		
+		myInfo = new AlertInfo(this);
 		
 		// Check to see if user still wants intro screen to show
 		pStream = new PreferencesStream();
@@ -219,6 +227,21 @@ public class MainActivity extends Activity {
 		case R.id.instructions:
 			showInstructions();
 			break;
+		case R.id.reconnect:
+			if (!myDrone.isConnected) {
+				// This option is used to re-connect to the last connected MAC
+				if (!myDrone.lastMAC.equals("")) {
+					if (!myDrone.btConnect(myDrone.lastMAC)) {
+						myInfo.connectFail();
+					}
+				} else {
+					// Notify the user if no previous MAC was found.
+					quickMessage("Last MAC not found... Please scan");
+				} 
+			} else {
+				quickMessage("Already connected...");
+			}
+			break;
 		}
 
 		return true;
@@ -266,7 +289,7 @@ public class MainActivity extends Activity {
 		tv_popupHumidity.setText(R.string.humidity1);
 		tv_popupDescription.setText(R.string.description1);
 		tv_popupExamples.setText(R.string.examples1);
-
+		
 		popup.showAtLocation(findViewById(R.id.anchor), Gravity.CENTER, 0, 0);
 	}
 	
@@ -309,6 +332,10 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void run() {
+				tv_tempVal.setVisibility(View.GONE);
+				tv_humidityVal.setVisibility(View.GONE);
+				tv_noConnect.setVisibility(View.VISIBLE);
+				
 				// Turn off myBlinker
 				box.myBlinker.disable();
 				tv_tempVal.setVisibility(View.GONE);
@@ -337,7 +364,7 @@ public class MainActivity extends Activity {
 				myHandler.postDelayed(this, 1000);
 			}
 			else {
-				tv_humidityVal.setText("Not Connected");
+				
 			}
 		}
 	};
@@ -413,6 +440,9 @@ public class MainActivity extends Activity {
 					myBlinker.run();
 					
 					tv_tempVal.setVisibility(View.VISIBLE);
+					tv_humidityVal.setVisibility(View.VISIBLE);
+					tv_noConnect.setVisibility(View.GONE);
+					
 					myHandler.post(displayHumidityRunnable);
 				}
 
@@ -435,7 +465,6 @@ public class MainActivity extends Activity {
 						
 					} else {
 						quickMessage("Re-connect failed");
-						tv_humidityVal.setText("Not Connected");
 						doOnDisconnect();
 					}
 				}
@@ -443,7 +472,6 @@ public class MainActivity extends Activity {
 				@Override
 				public void disconnectEvent(EventObject arg0) {
 					quickMessage("Disconnected!");
-					tv_humidityVal.setText("Not Connected");
 				}
 
 				@Override

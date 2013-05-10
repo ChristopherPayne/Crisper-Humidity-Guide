@@ -5,26 +5,29 @@
     android:padding="10dip"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#80000000"
+    android:background="#D0000000"
     android:id="@+id/popup_element"
     >
 
+    <ImageButton
+	        android:id="@+id/xButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:adjustViewBounds="true"  
+		    android:maxWidth="50dp"    
+		    android:scaleType="fitCenter" 
+	        android:src="@drawable/x" />
   
    <TextView
         android:id="@+id/popupHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
+        android:layout_below="@+id/xButton"
+        android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:text="@string/humidity1" />
 		
-	    <ImageButton
-	        android:id="@+id/xButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_toRightOf="@+id/popupHumidity"
-	        android:layout_marginLeft="30dp"
-	        android:src="@drawable/x" />
  
 	     <TextView
 	         android:id="@+id/popupDescription"
@@ -32,7 +35,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/popupHumidity"
 	        android:textColor="#FFFFFF"
-	        android:textSize="25dp"
+	        android:textSize="18dp"
 	        android:text="@string/description1"
 	    />
       
@@ -42,7 +45,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/popupDescription"
 	        android:textColor="#FFFFFF"
-	        android:textSize="20dp"
+	        android:textSize="15dp"
 	        android:text="@string/examples1"
 	    />
 </RelativeLayout>
