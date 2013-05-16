@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D0000000"
-    android:orientation="vertical" >
+    android:background="#F0000000"
+    android:orientation="vertical"
+    android:padding="10dp" >
     
     <ImageButton
 	        android:id="@+id/xButton"
@@ -110,5 +111,29 @@
         android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst8" />
+   
+    <TextView
+        android:id="@+id/inst9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inst8"
+          android:paddingLeft="15dp"
+          android:paddingRight="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:text="@string/inst9" />
+    
+     <TextView
+        android:id="@+id/inst10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inst9"
+          android:paddingLeft="15dp"
+          android:paddingRight="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:textColor="#FFFFFF"
+        android:text="@string/inst10" />
    
 </RelativeLayout>
