@@ -17,6 +17,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.text.Html;
@@ -103,9 +104,21 @@ public class MainActivity extends Activity {
 		View layout = inflater.inflate(R.layout.popup,
 				(ViewGroup) findViewById(R.id.popup_element));
 
+		int popupW;
+		
+		if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+			popupW = 700;
+		}
+		else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+			popupW = 300;
+		}
+		else {
+			popupW = 350;
+		}
+		
 		popup = new PopupWindow(
 				layout, 
-				700, 
+				popupW, 
 				LayoutParams.WRAP_CONTENT,
 				true);
 
@@ -118,7 +131,7 @@ public class MainActivity extends Activity {
 		
 		instPopup = new PopupWindow(
 				layout2, 
-				700, 
+				LayoutParams.MATCH_PARENT, 
 				LayoutParams.WRAP_CONTENT, 
 				true);
 		

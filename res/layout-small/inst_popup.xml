@@ -2,14 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D0000000"
-    android:orientation="vertical" >
+    android:background="#F0000000"
+    android:orientation="vertical"
+    android:padding="10dp" >
     
     <ImageButton
 	        android:id="@+id/xButton"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_alignParentRight="true"
+	        android:background="@null"
+	        android:adjustViewBounds="true"  
+	    	android:maxWidth="20dp"    
+	    	android:scaleType="fitCenter" 
 	        android:layout_marginLeft="30dp"
 	        android:src="@drawable/x" />
     
@@ -18,10 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          android:layout_centerHorizontal="true"
-         android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="50dp"
-        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst1" />
 
@@ -31,10 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst"
          android:layout_centerHorizontal="true"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:autoLink="web"
         android:text="@string/inst2" />
@@ -44,10 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst2"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst3" />
    
@@ -56,10 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst3"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst4" />
    
@@ -68,10 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst4"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst5" />
    
@@ -80,10 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst5"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst6" />
    
@@ -92,10 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst6"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst7" />
    
@@ -104,11 +95,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/inst7"
-          android:paddingLeft="15dp"
-          android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
         android:textColor="#FFFFFF"
         android:text="@string/inst8" />
+   
+     <TextView
+        android:id="@+id/inst10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inst8"
+        android:layout_marginTop="5dp"
+        android:textSize="10dp"
+        android:textColor="#FFFFFF"
+        android:text="@string/inst10" />
    
 </RelativeLayout>

@@ -19,6 +19,16 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
+        android:text="0% R.H."
+        android:textSize="50px" />
+    
+    <TextView
+        android:id="@+id/noConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="Not Connected"
         android:textSize="50px" />
     
@@ -37,8 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
-        android:layout_below="@+id/humidityValue"
-         android:layout_marginTop="45dp"
+         android:layout_marginTop="100dp"
         android:textSize="20dp"
         android:text="Crisper Guide" />
               

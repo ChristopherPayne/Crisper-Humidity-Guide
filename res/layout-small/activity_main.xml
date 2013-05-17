@@ -18,9 +18,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
+        android:text="0% R.H."
+        android:textSize="30px" />
+    
+    <TextView
+        android:id="@+id/noConnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:text="Not Connected"
-        android:textSize="100px" />
+        android:textSize="30px" />
     
     <TextView
         android:id="@+id/tempValue"
@@ -30,16 +40,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:text="40"
-        android:textSize="50px" />
+        android:textSize="25px" />
     
      <TextView
         android:id="@+id/labelGuide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
-        android:layout_below="@+id/humidityValue"
-         android:layout_marginTop="90dp"
-        android:textSize="40dp"
+         android:layout_marginTop="100dp"
+        android:textSize="20dp"
         android:text="Crisper Guide" />
               
     <TextView
@@ -57,7 +66,10 @@
         android:layout_below="@+id/labelGuide"
         android:layout_centerHorizontal="true"
         android:background="@null"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"  
+	    android:maxWidth="200dp"    
+	    android:scaleType="fitCenter" 
         android:src="@drawable/button1" />
 
     <ImageButton
@@ -67,7 +79,10 @@
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
         android:background="@null"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"  
+	    android:maxWidth="200dp"    
+	    android:scaleType="fitCenter" 
         android:src="@drawable/button2" />
 
     <ImageButton
@@ -77,7 +92,10 @@
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:background="@null"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"  
+	    android:maxWidth="200dp"    
+	    android:scaleType="fitCenter" 
         android:src="@drawable/button3" />
 
 </RelativeLayout>

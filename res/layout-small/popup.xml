@@ -9,22 +9,25 @@
     android:id="@+id/popup_element"
     >
 
+  <ImageButton
+	        android:id="@+id/xButton"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+          	android:background="@null"
+	        android:adjustViewBounds="true"  
+	    	android:maxWidth="20dp"    
+	    	android:scaleType="fitCenter" 
+	        android:layout_marginLeft="30dp"
+	        android:src="@drawable/x" />
   
    <TextView
         android:id="@+id/popupHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:text="@string/humidity1" />
-		
-	    <ImageButton
-	        android:id="@+id/xButton"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_alignParentRight="true"
-	        android:layout_marginLeft="30dp"
-	        android:src="@drawable/x" />
  
 	     <TextView
 	         android:id="@+id/popupDescription"
@@ -32,7 +35,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/popupHumidity"
 	        android:textColor="#FFFFFF"
-	        android:textSize="25dp"
+	        android:textSize="15dp"
 	        android:text="@string/description1"
 	    />
       
@@ -42,7 +45,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/popupDescription"
 	        android:textColor="#FFFFFF"
-	        android:textSize="20dp"
+	        android:textSize="13dp"
 	        android:text="@string/examples1"
 	    />
 </RelativeLayout>
