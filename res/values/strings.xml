@@ -22,12 +22,12 @@
     <string name="inst1">This app will help you adjust your refrigerator’s crisper to a humidity level that will make your produce store longer.  The guidelines in this app are based on the following reference (click link for more details)</string>
     <string name="inst2"><a href="%s">http://www.gardening.cornell.edu/factsheets/vegetables/storage.pdf</a></string>
     <string name="inst3">1.  Make sure your crisper doesn’t have any puddles of water in it, if so, dry them with a paper towel.</string>
-    <string name="inst5">3.  Place your Sensordrone in the crisper and close the door.</string>
-    <string name="inst6">4.  Allow the  Sensordrone to stabilize with the refrigerator temperature/humidity for 30 minutes.</string>
-    <string name="inst4">2.  Connect to your Sensordrone from the menu.</string>
+    <string name="inst4">2.  Place your Sensordrone in the crisper and close the door.</string>
+    <string name="inst5">3.  Allow the  Sensordrone to stabilize with the refrigerator temperature/humidity for 30 minutes.</string>
+    <string name="inst6">4.  Connect to your Sensordrone from the menu.</string>
     <string name="inst7">5.  Note the temperature and humidity compared to the guidelines.</string>
     <string name="inst8">6.  Adjust your crisper setting up or down as needed, and retest (steps 1-5) 4 or more hours later.</string>
     <string name="inst9">Having trouble maintaining high humidity levels in your crisper?  It is recommended to keep it at least half full with fresh leafy greens and vegetables for the high humidity setting. Make sure they are not in a package or covered in plastic. The vegetables will provide moisture to increase the humidity. Even at half full, it may not reach up to 90%. In this case, you will likely want to make sure it is almost completely full. If this does still not work, you can rinse your veggies before you put them in, and this will also add to the moisture in the crisper. And make sure to only open it when you need to take something out or put something in, and close it quickly.</string>
-    <string name="inst10">NOTE: Some industrial refridgerators contain more metal than standard consumer refridgerators. This may make it difficult to connect to the sensordrone with the door closed.</string>
+    <string name="inst10">NOTE: Some industrial refrigerators contain more metal than standard consumer refrigerators. This may make it difficult to connect to the Sensordrone with the door closed.</string>
     
 </resources>
